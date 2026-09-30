@@ -1,0 +1,2 @@
+{"timestamp":"2026-09-29T09:52:44Z","action":"guard","status":"allow","feature_directory":"","decision":"allow","reason":"","actor":"unknown","checked_action":"speckit.plan"}
+{"timestamp":"2026-09-29T09:52:49Z","action":"guard","status":"allow","feature_directory":"","decision":"allow","reason":"","actor":"unknown","checked_action":"speckit.implement"}
