@@ -7,7 +7,8 @@
     "build": "nest build",
     "start": "node dist/main",
     "start:debug": "nest start --debug --watch",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "jest"
   },
   "dependencies": {
     "@langchain/community": "^1.1.29",
@@ -29,14 +30,18 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^10.4.0",
+    "@nestjs/testing": "^10.4.0",
     "@sancus-flow/tsconfig": "workspace:*",
     "@sancus-flow/types": "workspace:*",
     "@swc/cli": "^0.8.1",
     "@swc/core": "^1.16.2",
     "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "^22.0.0",
-    "typescript": "^5.7.0",
+    "@types/pg": "^8.15.12",
     "drizzle-kit": "^0.31.11",
-    "@types/pg": "^8.15.12"
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.14",
+    "typescript": "^5.7.0"
   }
 }
