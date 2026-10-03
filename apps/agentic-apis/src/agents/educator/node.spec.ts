@@ -1,3 +1,5 @@
+import { describe, it, expect, mock, beforeEach, afterEach, beforeAll, afterAll } from "bun:test";
+
 import { createEducatorNode } from './node';
 import { AgenticState } from '../supervisor/state';
 import { HumanMessage } from '@langchain/core/messages';
@@ -5,13 +7,13 @@ import { HumanMessage } from '@langchain/core/messages';
 describe('Educator Node', () => {
   it('should retrieve domain knowledge and update retrievedContext', async () => {
     const mockService = {
-      searchDomainKnowledge: jest.fn().mockResolvedValue([
+      searchDomainKnowledge: mock().mockResolvedValue([
         { title: 'Doc 1', content: 'Fact 1' }
       ]),
     };
 
     const mockEmbeddings = {
-      embedQuery: jest.fn().mockResolvedValue(Array(256).fill(0.1)),
+      embedQuery: mock().mockResolvedValue(Array(256).fill(0.1)),
     };
 
     const node = createEducatorNode(mockService as any, mockEmbeddings as any);

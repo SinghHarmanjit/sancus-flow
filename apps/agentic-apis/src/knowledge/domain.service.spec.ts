@@ -1,3 +1,5 @@
+import { describe, it, expect, mock, beforeEach, afterEach, beforeAll, afterAll } from "bun:test";
+
 import { Test, TestingModule } from '@nestjs/testing';
 import { DomainKnowledgeService } from './domain.service';
 import { domainKnowledgeVectors, domainKnowledgeVersions, domainKnowledgeDocuments } from '../db/schema';
@@ -8,12 +10,12 @@ describe('DomainKnowledgeService', () => {
 
   beforeEach(async () => {
     mockDb = {
-      select: jest.fn().mockReturnThis(),
-      from: jest.fn().mockReturnThis(),
-      innerJoin: jest.fn().mockReturnThis(),
-      where: jest.fn().mockReturnThis(),
-      orderBy: jest.fn().mockReturnThis(),
-      limit: jest.fn().mockResolvedValue([]),
+      select: mock().mockReturnThis(),
+      from: mock().mockReturnThis(),
+      innerJoin: mock().mockReturnThis(),
+      where: mock().mockReturnThis(),
+      orderBy: mock().mockReturnThis(),
+      limit: mock().mockResolvedValue([]),
     };
 
     const module: TestingModule = await Test.createTestingModule({

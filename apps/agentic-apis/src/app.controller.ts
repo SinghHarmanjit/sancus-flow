@@ -6,7 +6,7 @@ export class AppController {
   getInfo() {
     return {
       service: '@sancus-flow/agentic-apis',
-      description: 'AI Agent Engine — LangGraph.js + MEDDPICC Qualification',
+      description: 'AI Agent Legal Engine',
       version: '0.0.1',
     };
   }

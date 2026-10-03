@@ -1,3 +1,5 @@
+import { describe, it, expect, mock, beforeEach, afterEach, beforeAll, afterAll } from "bun:test";
+
 import { createComposerNode } from './composer';
 import { AgenticState } from './state';
 import { HumanMessage, AIMessage } from '@langchain/core/messages';
@@ -5,7 +7,7 @@ import { HumanMessage, AIMessage } from '@langchain/core/messages';
 describe('Composer Node', () => {
   it('should synthesize a response for education phase', async () => {
     const mockLlm = {
-      invoke: jest.fn().mockResolvedValue(new AIMessage('This is an educational response.')),
+      invoke: mock().mockResolvedValue(new AIMessage('This is an educational response.')),
     };
 
     const node = createComposerNode(mockLlm as any);

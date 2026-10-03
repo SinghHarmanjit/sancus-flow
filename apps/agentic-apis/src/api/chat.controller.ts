@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { StartSessionRequest, ChatMessageRequest, ChatMessageResponse } from '@sancus-flow/types/src/agentic';
+import type { StartSessionRequest, ChatMessageRequest, ChatMessageResponse } from '@sancus-flow/types/src/agentic';
 
 @Controller('chat')
 export class ChatController {

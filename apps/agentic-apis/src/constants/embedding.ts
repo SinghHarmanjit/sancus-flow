@@ -1,0 +1,4 @@
+export const NOMIC_EMBEDDING_DIMENSIONS = 256;
+export const NOMIC_EMBEDDING_CHUNK_SIZE = 4000;
+export const NOMIC_EMBEDDING_CHUNK_OVERLAP = 200;
+export const NOMIC_EMBEDDING_MODEL_NAME = 'nomic-embed-text-v1.5';

@@ -5,4 +5,4 @@
  * Used across agentic and CRM layers.
  */
 
-export {};
+export * from './agentic';
