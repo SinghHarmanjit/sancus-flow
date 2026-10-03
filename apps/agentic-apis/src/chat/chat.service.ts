@@ -1,5 +1,7 @@
 import {
   Injectable,
+  InternalServerErrorException,
+  Logger,
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
@@ -12,6 +14,7 @@ import {
 
 @Injectable()
 export class ChatService {
+  private readonly logger = new Logger(ChatService.name);
   constructor(
     private readonly llm: LlmService,
     private readonly chatRepo: ChatRepository,
@@ -60,11 +63,19 @@ export class ChatService {
     ];
 
     // Invoke LLM
-    const response = await this.llm.chat.invoke(langChainMessages);
-    const replyContent =
-      typeof response.content === 'string'
-        ? response.content
-        : JSON.stringify(response.content);
+    let replyContent: string;
+    try {
+      const response = await this.llm.chat.invoke(langChainMessages);
+      replyContent =
+        typeof response.content === 'string'
+          ? response.content
+          : JSON.stringify(response.content);
+    } catch (err) {
+      this.logger.error('LLM invocation failed', err);
+      throw new InternalServerErrorException(
+        `LLM unavailable: ${(err as Error).message}`,
+      );
+    }
 
     // Save assistant message
     const assistantMessage = await this.chatRepo.saveMessage(

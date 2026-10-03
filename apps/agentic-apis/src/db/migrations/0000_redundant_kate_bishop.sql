@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS vector;--> statement-breakpoint
 CREATE TYPE "public"."document_status" AS ENUM('active', 'draft', 'archived');--> statement-breakpoint
 CREATE TYPE "public"."domain" AS ENUM('wills', 'conveyancing');--> statement-breakpoint
 CREATE TYPE "public"."message_role" AS ENUM('user', 'assistant', 'system', 'tool');--> statement-breakpoint
@@ -11,7 +12,7 @@ CREATE TABLE "agentic_checkpoints" (
 );
 --> statement-breakpoint
 CREATE TABLE "case_study_documents" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"short_summary" text,
 	"domain" "domain" NOT NULL,
@@ -19,13 +20,13 @@ CREATE TABLE "case_study_documents" (
 );
 --> statement-breakpoint
 CREATE TABLE "case_study_taxonomy_tags" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"case_study_id" uuid NOT NULL,
 	"tag_data" jsonb NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "case_study_vectors" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"version_id" uuid NOT NULL,
 	"chunk_index" integer NOT NULL,
 	"content" text NOT NULL,
@@ -33,7 +34,7 @@ CREATE TABLE "case_study_vectors" (
 );
 --> statement-breakpoint
 CREATE TABLE "case_study_versions" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"case_study_id" uuid NOT NULL,
 	"version_number" integer NOT NULL,
 	"source_url" text,
@@ -42,7 +43,7 @@ CREATE TABLE "case_study_versions" (
 );
 --> statement-breakpoint
 CREATE TABLE "chat_messages" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"session_id" uuid NOT NULL,
 	"role" "message_role" NOT NULL,
 	"content" text NOT NULL,
@@ -51,7 +52,7 @@ CREATE TABLE "chat_messages" (
 );
 --> statement-breakpoint
 CREATE TABLE "chat_sessions" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"prospect_id" uuid,
 	"domain" "domain" NOT NULL,
 	"status" "session_status" DEFAULT 'active' NOT NULL,
@@ -59,7 +60,7 @@ CREATE TABLE "chat_sessions" (
 );
 --> statement-breakpoint
 CREATE TABLE "domain_knowledge_documents" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"title" varchar(255) NOT NULL,
 	"short_summary" text,
 	"domain" "domain" NOT NULL,
@@ -67,7 +68,7 @@ CREATE TABLE "domain_knowledge_documents" (
 );
 --> statement-breakpoint
 CREATE TABLE "domain_knowledge_vectors" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"version_id" uuid NOT NULL,
 	"chunk_index" integer NOT NULL,
 	"content" text NOT NULL,
@@ -75,7 +76,7 @@ CREATE TABLE "domain_knowledge_vectors" (
 );
 --> statement-breakpoint
 CREATE TABLE "domain_knowledge_versions" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"document_id" uuid NOT NULL,
 	"version_number" integer NOT NULL,
 	"source_url" text,
@@ -84,7 +85,7 @@ CREATE TABLE "domain_knowledge_versions" (
 );
 --> statement-breakpoint
 CREATE TABLE "prospect_facts" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"prospect_id" uuid NOT NULL,
 	"domain" "domain" NOT NULL,
 	"fact_key" varchar(255) NOT NULL,
@@ -94,7 +95,7 @@ CREATE TABLE "prospect_facts" (
 );
 --> statement-breakpoint
 CREATE TABLE "prospect_leaf_profiles" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"prospect_id" uuid NOT NULL,
 	"taxonomy_entity_id" uuid NOT NULL,
 	"extracted_data" jsonb NOT NULL,
@@ -102,7 +103,7 @@ CREATE TABLE "prospect_leaf_profiles" (
 );
 --> statement-breakpoint
 CREATE TABLE "prospects" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"first_name" varchar(255),
 	"last_name" varchar(255),
 	"email" varchar(255),
@@ -111,7 +112,7 @@ CREATE TABLE "prospects" (
 );
 --> statement-breakpoint
 CREATE TABLE "taxonomy_entity_definitions" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT uuidv7() NOT NULL,
 	"domain" "domain" NOT NULL,
 	"entity_name" varchar(255) NOT NULL,
 	"description" text NOT NULL,
