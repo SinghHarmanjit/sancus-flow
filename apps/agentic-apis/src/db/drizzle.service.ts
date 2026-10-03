@@ -22,7 +22,7 @@ export class DrizzleService implements OnModuleInit, OnModuleDestroy {
     this.pool = new Pool({ connectionString: url });
     this.db = drizzle(this.pool, { schema });
 
-    const migrationsFolder = path.join(process.cwd(), 'src/db/migrations');
+    const migrationsFolder = path.join(__dirname, 'migrations');
     await migrate(this.db, { migrationsFolder });
     this.logger.log('Migrations applied successfully');
   }

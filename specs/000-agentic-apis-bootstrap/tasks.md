@@ -11,21 +11,21 @@
 
 | # | Task | Depends On | Status |
 |---|------|-----------|--------|
-| T01 | Install missing dependencies | — | ⬜ |
-| T02 | Create `drizzle.config.ts` | — | ⬜ |
-| T03 | Add DB scripts to `package.json` | T02 | ⬜ |
-| T04 | Implement `DrizzleService` + `DrizzleModule` | T02 | ⬜ |
-| T05 | Implement `LlmService` + `LlmModule` | — | ⬜ |
-| T06 | Implement `ChatRepository` | T04 | ⬜ |
-| T07 | Implement `ChatService` | T05, T06 | ⬜ |
-| T08 | Implement `ChatController` + DTOs | T07 | ⬜ |
-| T09 | Create `ChatModule` | T08 | ⬜ |
-| T10 | Implement `HealthController` + `HealthModule` | T04, T05 | ⬜ |
-| T11 | Update `AppModule` | T04, T05, T09, T10 | ⬜ |
-| T12 | Update `main.ts` | T11 | ⬜ |
-| T13 | Update `.env` LLM ports | — | ⬜ |
-| T14 | Generate Drizzle migrations | T03, T04 | ⬜ |
-| T15 | E2E validation | T12, T13, T14 | ⬜ |
+| T01 | Install missing dependencies | — | ✅ |
+| T02 | Create `drizzle.config.ts` | — | ✅ |
+| T03 | Add DB scripts to `package.json` | T02 | ✅ |
+| T04 | Implement `DrizzleService` + `DrizzleModule` | T02 | ✅ |
+| T05 | Implement `LlmService` + `LlmModule` | — | ✅ |
+| T06 | Implement `ChatRepository` | T04 | ✅ |
+| T07 | Implement `ChatService` | T05, T06 | ✅ |
+| T08 | Implement `ChatController` + DTOs | T07 | ✅ |
+| T09 | Create `ChatModule` | T08 | ✅ |
+| T10 | Implement `HealthController` + `HealthModule` | T04, T05 | ✅ |
+| T11 | Update `AppModule` | T04, T05, T09, T10 | ✅ |
+| T12 | Update `main.ts` | T11 | ✅ |
+| T13 | Update `.env` LLM ports | — | ✅ |
+| T14 | Generate Drizzle migrations | T03, T04 | ✅ |
+| T15 | E2E validation | T12, T13, T14 | ✅ |
 
 ---
 
